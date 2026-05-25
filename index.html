@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sistema Proposte</title>
+    <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@400;600;700;800&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
     <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -15,63 +16,84 @@
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            font-family: 'Mulish', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: #f5f5f5;
             min-height: 100vh;
             padding: 20px;
         }
 
         .container {
-            max-width: 600px;
+            max-width: 650px;
             margin: 0 auto;
             background: white;
-            border-radius: 16px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            border-radius: 2px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
             overflow: hidden;
+            border-top: 4px solid #dc0000;
         }
 
         .header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
             color: white;
-            padding: 30px;
-            text-align: center;
+            padding: 40px 30px;
+            position: relative;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #dc0000 0%, #ff3333 100%);
         }
 
         .header h1 {
-            font-size: 28px;
-            margin-bottom: 8px;
+            font-size: 32px;
+            margin-bottom: 10px;
+            font-weight: 800;
+            letter-spacing: -0.5px;
         }
 
         .header p {
-            opacity: 0.9;
-            font-size: 14px;
+            opacity: 0.85;
+            font-size: 15px;
+            font-weight: 400;
         }
 
         .content {
-            padding: 30px;
+            padding: 40px 30px;
         }
 
         .btn {
             width: 100%;
-            padding: 16px;
-            font-size: 18px;
-            font-weight: 600;
+            padding: 18px;
+            font-size: 16px;
+            font-weight: 700;
             border: none;
-            border-radius: 8px;
+            border-radius: 2px;
             cursor: pointer;
-            transition: all 0.3s;
+            transition: all 0.3s ease;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
+            letter-spacing: 1px;
+            font-family: 'Mulish', sans-serif;
         }
 
         .btn-primary {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: #dc0000;
             color: white;
+            box-shadow: 0 4px 12px rgba(220, 0, 0, 0.3);
         }
 
         .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.4);
+            background: #b80000;
+            box-shadow: 0 6px 16px rgba(220, 0, 0, 0.4);
+            transform: translateY(-1px);
+        }
+
+        .btn-primary:active {
+            transform: translateY(0);
         }
 
         .btn-primary:disabled {
@@ -81,164 +103,250 @@
         }
 
         .btn-secondary {
-            background: #f3f4f6;
-            color: #374151;
+            background: #f5f5f5;
+            color: #1a1a1a;
             margin-top: 12px;
+            border: 2px solid #e0e0e0;
+            font-weight: 600;
         }
 
         .btn-secondary:hover {
-            background: #e5e7eb;
+            background: #e8e8e8;
+            border-color: #d0d0d0;
         }
 
         .form-group {
-            margin-bottom: 20px;
+            margin-bottom: 24px;
         }
 
         .form-group label {
             display: block;
-            margin-bottom: 8px;
-            font-weight: 600;
-            color: #374151;
+            margin-bottom: 10px;
+            font-weight: 700;
+            color: #1a1a1a;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
         .form-group input,
         .form-group textarea {
             width: 100%;
-            padding: 12px;
-            border: 2px solid #e5e7eb;
-            border-radius: 8px;
-            font-size: 16px;
-            font-family: inherit;
-            transition: border-color 0.3s;
+            padding: 14px 16px;
+            border: 2px solid #e0e0e0;
+            border-radius: 2px;
+            font-size: 15px;
+            font-family: 'Mulish', sans-serif;
+            transition: all 0.3s ease;
+            background: white;
         }
 
         .form-group input:focus,
         .form-group textarea:focus {
             outline: none;
-            border-color: #667eea;
+            border-color: #dc0000;
+            box-shadow: 0 0 0 3px rgba(220, 0, 0, 0.1);
         }
 
         .form-group textarea {
-            min-height: 150px;
+            min-height: 160px;
             resize: vertical;
+            line-height: 1.6;
         }
 
         .success-message {
-            background: #d1fae5;
-            color: #065f46;
-            padding: 16px;
-            border-radius: 8px;
-            margin-bottom: 20px;
+            background: #e8f5e9;
+            color: #1b5e20;
+            padding: 18px;
+            border-radius: 2px;
+            margin-bottom: 24px;
             text-align: center;
-            font-weight: 600;
+            font-weight: 700;
+            border-left: 4px solid #4caf50;
         }
 
         .error-message {
-            background: #fee2e2;
-            color: #991b1b;
-            padding: 16px;
-            border-radius: 8px;
-            margin-bottom: 20px;
+            background: #ffebee;
+            color: #c62828;
+            padding: 18px;
+            border-radius: 2px;
+            margin-bottom: 24px;
             text-align: center;
-            font-weight: 600;
+            font-weight: 700;
+            border-left: 4px solid #f44336;
         }
 
         .admin-login {
             text-align: center;
-            padding: 20px;
-            border-top: 1px solid #e5e7eb;
+            padding: 24px 0 0 0;
+            border-top: 2px solid #f5f5f5;
+            margin-top: 24px;
         }
 
         .admin-link {
-            color: #667eea;
+            color: #666;
             text-decoration: none;
-            font-size: 14px;
-            font-weight: 500;
+            font-size: 13px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: color 0.3s;
         }
 
         .admin-link:hover {
-            text-decoration: underline;
+            color: #dc0000;
         }
 
         .proposals-list {
-            max-height: 500px;
+            max-height: 550px;
             overflow-y: auto;
+            margin-bottom: 20px;
         }
 
         .proposal-card {
-            background: #f9fafb;
-            border: 1px solid #e5e7eb;
-            border-radius: 8px;
-            padding: 16px;
-            margin-bottom: 12px;
+            background: #fafafa;
+            border: 1px solid #e0e0e0;
+            border-left: 4px solid #dc0000;
+            border-radius: 2px;
+            padding: 20px;
+            margin-bottom: 16px;
+            transition: all 0.3s;
+        }
+
+        .proposal-card:hover {
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            transform: translateX(4px);
         }
 
         .proposal-card h3 {
-            color: #374151;
-            margin-bottom: 8px;
-            font-size: 16px;
+            color: #1a1a1a;
+            margin-bottom: 10px;
+            font-size: 17px;
+            font-weight: 700;
         }
 
         .proposal-card p {
-            color: #6b7280;
-            font-size: 14px;
-            line-height: 1.5;
-            margin-bottom: 8px;
+            color: #4a4a4a;
+            font-size: 15px;
+            line-height: 1.6;
+            margin-bottom: 12px;
         }
 
         .proposal-meta {
             display: flex;
             justify-content: space-between;
+            align-items: center;
             font-size: 12px;
-            color: #9ca3af;
-            margin-top: 12px;
+            color: #888;
+            margin-top: 16px;
+            padding-top: 12px;
+            border-top: 1px solid #e8e8e8;
         }
 
         .delete-btn {
-            background: #ef4444;
+            background: #dc0000;
             color: white;
             border: none;
-            padding: 6px 12px;
-            border-radius: 4px;
+            padding: 8px 16px;
+            border-radius: 2px;
             cursor: pointer;
-            font-size: 12px;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: all 0.3s;
         }
 
         .delete-btn:hover {
-            background: #dc2626;
+            background: #b80000;
         }
 
         .empty-state {
             text-align: center;
-            padding: 40px;
-            color: #6b7280;
+            padding: 60px 20px;
+            color: #888;
+        }
+
+        .empty-state p {
+            font-size: 16px;
+            font-weight: 600;
         }
 
         .badge {
             display: inline-block;
-            background: #667eea;
+            background: #dc0000;
             color: white;
-            padding: 4px 12px;
-            border-radius: 12px;
-            font-size: 12px;
-            font-weight: 600;
+            padding: 6px 14px;
+            border-radius: 2px;
+            font-size: 11px;
+            font-weight: 800;
             margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
         .loading {
             text-align: center;
-            padding: 20px;
-            color: #6b7280;
+            padding: 40px;
+            color: #888;
+            font-weight: 600;
         }
 
         .info-box {
-            background: #dbeafe;
-            border: 1px solid #93c5fd;
-            color: #1e40af;
-            padding: 12px;
-            border-radius: 8px;
-            font-size: 13px;
-            margin-bottom: 20px;
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+            border-left: 4px solid #ffc107;
+            color: #856404;
+            padding: 16px;
+            border-radius: 2px;
+            font-size: 14px;
+            margin-bottom: 24px;
+            font-weight: 600;
+        }
+
+        .stats-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+            padding: 20px;
+            background: linear-gradient(135deg, #f5f5f5 0%, #e8e8e8 100%);
+            border-radius: 2px;
+            border-left: 4px solid #dc0000;
+        }
+
+        .stats-header h2 {
+            font-size: 18px;
+            font-weight: 800;
+            color: #1a1a1a;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .stats-count {
+            background: #dc0000;
+            color: white;
+            padding: 8px 18px;
+            border-radius: 2px;
+            font-weight: 800;
+            font-size: 16px;
+        }
+
+        .proposals-list::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .proposals-list::-webkit-scrollbar-track {
+            background: #f5f5f5;
+        }
+
+        .proposals-list::-webkit-scrollbar-thumb {
+            background: #dc0000;
+            border-radius: 4px;
+        }
+
+        .proposals-list::-webkit-scrollbar-thumb:hover {
+            background: #b80000;
         }
     </style>
 </head>
@@ -248,8 +356,7 @@
     <script type="text/babel">
         const { useState, useEffect } = React;
 
-        // CONFIGURAZIONE - Inserisci qui l'URL del tuo Google Apps Script
-       const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxYkAJKPOfMCHGAKS6MOtSk3Js7rMhrVaBajfzf7NMmCqGa94xDmUa9aF-ewxFXPRK22A/exec';
+        const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxYkAJKPOfMCHGAKS6MOtSk3Js7rMhrVaBajfzf7NMmCqGa94xDmUa9aF-ewxFXPRK22A/exec';
 
         function App() {
             const [view, setView] = useState('home');
@@ -364,20 +471,19 @@
                 }
             };
 
-            // HOME VIEW
             if (view === 'home') {
                 return (
                     <div className="container">
                         <div className="header">
-                            <h1>💡 Le tue idee contano!</h1>
-                            <p>Aiutaci a migliorare il nostro lavoro</p>
+                            <h1>Sistema Proposte</h1>
+                            <p>La tua voce è importante per il miglioramento continuo</p>
                         </div>
                         <div className="content">
                             <button 
                                 className="btn btn-primary"
                                 onClick={() => setView('form')}
                             >
-                                Dicci la tua!
+                                Invia la tua proposta
                             </button>
                             <div className="admin-login">
                                 <a 
@@ -388,7 +494,7 @@
                                         setView('adminLogin');
                                     }}
                                 >
-                                    Area Admin
+                                    Accesso Amministratori
                                 </a>
                             </div>
                         </div>
@@ -396,44 +502,38 @@
                 );
             }
 
-            // FORM VIEW
             if (view === 'form') {
                 return (
                     <div className="container">
                         <div className="header">
-                            <h1>📝 Invia la tua proposta</h1>
-                            <p>Ogni suggerimento è prezioso</p>
+                            <h1>Nuova Proposta</h1>
+                            <p>Condividi le tue idee per migliorare i processi aziendali</p>
                         </div>
                         <div className="content">
                             {showSuccess && (
                                 <div className="success-message">
-                                    ✅ Proposta inviata con successo!
+                                    ✓ Proposta inviata con successo
                                 </div>
                             )}
                             {showError && (
                                 <div className="error-message">
-                                    ❌ {errorMessage}
-                                </div>
-                            )}
-                            {GOOGLE_SCRIPT_URL === 'INSERISCI_QUI_URL_DELLO_SCRIPT' && (
-                                <div className="info-box">
-                                    ⚠️ Sistema non ancora configurato. Segui le istruzioni nel file README.
+                                    ✕ {errorMessage}
                                 </div>
                             )}
                             <form onSubmit={handleSubmit}>
                                 <div className="form-group">
-                                    <label>Il tuo nome (opzionale)</label>
+                                    <label>Nome (opzionale)</label>
                                     <input 
                                         type="text"
-                                        placeholder="Es: Mario Rossi"
+                                        placeholder="Il tuo nome"
                                         value={formData.name}
                                         onChange={(e) => setFormData({...formData, name: e.target.value})}
                                     />
                                 </div>
                                 <div className="form-group">
-                                    <label>La tua proposta *</label>
+                                    <label>Proposta *</label>
                                     <textarea 
-                                        placeholder="Descrivi la tua idea o suggerimento..."
+                                        placeholder="Descrivi la tua idea di miglioramento..."
                                         value={formData.message}
                                         onChange={(e) => setFormData({...formData, message: e.target.value})}
                                         required
@@ -460,13 +560,12 @@
                 );
             }
 
-            // ADMIN LOGIN VIEW
             if (view === 'adminLogin') {
                 return (
                     <div className="container">
                         <div className="header">
-                            <h1>🔐 Login Admin</h1>
-                            <p>Accedi per vedere le proposte</p>
+                            <h1>Accesso Admin</h1>
+                            <p>Area riservata agli amministratori</p>
                         </div>
                         <div className="content">
                             <form onSubmit={handleAdminLogin}>
@@ -474,14 +573,11 @@
                                     <label>Password</label>
                                     <input 
                                         type="password"
-                                        placeholder="Inserisci password"
+                                        placeholder="Inserisci la password"
                                         value={adminPassword}
                                         onChange={(e) => setAdminPassword(e.target.value)}
                                         required
                                     />
-                                    <p style={{fontSize: '12px', color: '#6b7280', marginTop: '8px'}}>
-                                        Password demo: admin123
-                                    </p>
                                 </div>
                                 <button type="submit" className="btn btn-primary">
                                     Accedi
@@ -499,26 +595,29 @@
                 );
             }
 
-            // ADMIN VIEW
             if (view === 'admin' && isAdmin) {
                 return (
                     <div className="container">
                         <div className="header">
-                            <h1>📊 Pannello Admin</h1>
-                            <p>{proposals.length} proposte ricevute</p>
+                            <h1>Pannello Amministrazione</h1>
+                            <p>Gestione proposte ricevute</p>
                         </div>
                         <div className="content">
+                            <div className="stats-header">
+                                <h2>Proposte Totali</h2>
+                                <span className="stats-count">{proposals.length}</span>
+                            </div>
                             {loading ? (
-                                <div className="loading">Caricamento...</div>
+                                <div className="loading">Caricamento in corso...</div>
                             ) : proposals.length === 0 ? (
                                 <div className="empty-state">
-                                    <p>Nessuna proposta ancora ricevuta</p>
+                                    <p>Nessuna proposta ricevuta</p>
                                 </div>
                             ) : (
                                 <div className="proposals-list">
                                     {proposals.map((proposal) => (
                                         <div key={proposal.id} className="proposal-card">
-                                            <div className="badge">Proposta</div>
+                                            <div className="badge">Nuova</div>
                                             <h3>{proposal.name || 'Anonimo'}</h3>
                                             <p>{proposal.message}</p>
                                             <div className="proposal-meta">
